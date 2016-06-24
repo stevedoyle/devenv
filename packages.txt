@@ -1,0 +1,9 @@
+git
+g++
+make
+cmake
+python-setuptools
+python-dev
+build-essential
+python-pip
+python3-pip
