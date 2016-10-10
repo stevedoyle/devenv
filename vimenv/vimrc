@@ -1,0 +1,78 @@
+" indendentation specific to file types
+:filetype plugin indent on
+
+filetype plugin on
+
+" spaces instead of tabs
+set expandtab
+
+" show line numbers
+"set number
+
+" highlight the searchterms
+set hlsearch
+
+" jump to matches when typing
+set incsearch
+
+" show matching braces
+set showmatch
+
+" show partial commands
+set showcmd
+
+" powerful backspaces
+set backspace=indent,eol,start
+
+" syntax highlight
+syntax on
+
+" enable all features
+set nocompatible
+
+" show ruler including line and column numbers
+set ruler
+
+" Smart case sensitivity when searching. Use all lower case for case
+" insensitive search. Any upper case character in the search string will
+" result in a case sensitive search. Override with \c in the search string. 
+set ignorecase
+set smartcase
+
+" dark background
+" set bg=dark
+
+" set term=builtin_ansi
+
+:map <C-\> :tab split<CR> :exe 'tj' expand('<cword>')<CR>
+
+" look for the tags file in the current directory and work up the tree towards root
+" until one is found. You can be anywhere in your source tree instead of the root of it
+set tags=./tags;/
+
+" When editing a file, always jump to the last known cursor positionr.
+" Don't do it when the position is invalid or when inside an event handler.
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
+" List all functions in a file
+" functions defined in $HOME/.vim/plugin/funcs.vim
+map	,l	:call ListAllFunctions(1)<CR>
+map	,j	:<C-U>call JumpToFunction(0)<CR>
+
+" taglist plugin shortcuts and settings
+noremap <silent> <F8> :TlistToggle<CR>
+noremap <silent> <F9> :TlistShowTag<CR>
+
+" Automatically add C/C++ header gates to new C/C++ header files
+function! s:insert_gates()
+  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+  execute "normal! i#ifndef _" . gatename . "_"
+  execute "normal! o#define _" . gatename . "_\n"
+  execute "normal! Go#endif /* _" . gatename . "_ */"
+  normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+
