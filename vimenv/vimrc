@@ -36,7 +36,7 @@ filetype plugin on
 " See docstrings for folded code
 let g:SimpylFold_docstring_preview=1
 
-au BufRead,BufNewFile *.py
+au BufRead,BufNewFile *.py,*.uts
 	\ set tabstop=4 |
 	\ set softtabstop=4 |
 	\ set shiftwidth=4 |
@@ -74,6 +74,14 @@ syntax on
 
 set nu
 set clipboard=unnamed
+
+set ignorecase
+set smartcase
+
+" Remember position in file when reopening
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " Make backspace on OS X delete over line breaks and auto-indent
 set backspace=indent,eol,start
