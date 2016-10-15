@@ -1,78 +1,80 @@
-" indendentation specific to file types
-:filetype plugin indent on
+set nocompatible          	" required
+filetype off              	" required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Add all your plugins here
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
+"Syntax highlighting
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+"Tree view
+Plugin 'scrooloose/nerdtree'
+"color scheme
+Plugin 'jnurmine/Zenburn'
+"git interface
+Plugin 'tpope/vim-fugitive'
+"Status line config
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'vim-scripts/taglist.vim'
+
+" All of your plugins must be added before the following line
+call vundle#end()		" required
+filetype plugin indent on	" required
 
 filetype plugin on
 
-" spaces instead of tabs
-set expandtab
+" See docstrings for folded code
+let g:SimpylFold_docstring_preview=1
 
-" show line numbers
-"set number
+au BufRead,BufNewFile *.py
+	\ set tabstop=4 |
+	\ set softtabstop=4 |
+	\ set shiftwidth=4 |
+	\ set textwidth=79 |
+	\ set expandtab |
+	\ set autoindent |
+	\ set fileformat=unix
 
-" highlight the searchterms
-set hlsearch
+au BufNewFile,BufRead *.js, *.html, *.css
+	\ set tabstop=2 |
+	\ set softtabstop=2 |
+	\ set shiftwidth=2
 
-" jump to matches when typing
-set incsearch
+" Flag extraneous whitespace
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" show matching braces
-set showmatch
+" Folding for c doe
+au BufRead,BufNewFile *.c,*.h,*.cpp,*.cc
+	\ set foldmethod=syntax |
+	\ normal zR
 
-" show partial commands
-set showcmd
+set encoding=utf-8
 
-" powerful backspaces
-set backspace=indent,eol,start
+" YouCompleteMe customizations
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" syntax highlight
+" Enable syntax highlighting
+let python_highlight_all=1
 syntax on
 
-" enable all features
-set nocompatible
+" Setup colorscheme
+"colorscheme zenburn
 
-" show ruler including line and column numbers
-set ruler
+set nu
+set clipboard=unnamed
 
-" Smart case sensitivity when searching. Use all lower case for case
-" insensitive search. Any upper case character in the search string will
-" result in a case sensitive search. Override with \c in the search string. 
-set ignorecase
-set smartcase
-
-" dark background
-" set bg=dark
-
-" set term=builtin_ansi
-
-:map <C-\> :tab split<CR> :exe 'tj' expand('<cword>')<CR>
-
-" look for the tags file in the current directory and work up the tree towards root
-" until one is found. You can be anywhere in your source tree instead of the root of it
-set tags=./tags;/
-
-" When editing a file, always jump to the last known cursor positionr.
-" Don't do it when the position is invalid or when inside an event handler.
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
-
-" List all functions in a file
-" functions defined in $HOME/.vim/plugin/funcs.vim
-map	,l	:call ListAllFunctions(1)<CR>
-map	,j	:<C-U>call JumpToFunction(0)<CR>
-
-" taglist plugin shortcuts and settings
-noremap <silent> <F8> :TlistToggle<CR>
-noremap <silent> <F9> :TlistShowTag<CR>
-
-" Automatically add C/C++ header gates to new C/C++ header files
-function! s:insert_gates()
-  let gatename = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-  execute "normal! i#ifndef _" . gatename . "_"
-  execute "normal! o#define _" . gatename . "_\n"
-  execute "normal! Go#endif /* _" . gatename . "_ */"
-  normal! kk
-endfunction
-autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+" Make backspace on OS X delete over line breaks and auto-indent
+set backspace=indent,eol,start
 
