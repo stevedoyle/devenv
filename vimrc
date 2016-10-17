@@ -72,6 +72,10 @@ syntax on
 " Setup colorscheme
 "colorscheme zenburn
 
+" taglist plugin shortcuts and settings
+noremap <silent> <F8> :TlistToggle<CR>
+noremap <silent> <F9> :TlistShowTag<CR
+
 set nu
 set clipboard=unnamed
 
