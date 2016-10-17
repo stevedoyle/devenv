@@ -10,3 +10,5 @@
 echo "Installing Vundle plugins for vim ..."
 vim +PluginInstall +qall
 
+# ctags setup
+\cp -v --backup=numbered dotctags ~/.ctags
