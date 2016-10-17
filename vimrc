@@ -24,7 +24,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'tpope/vim-fugitive'
 "Status line config
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'vim-scripts/taglist.vim'
 
 " All of your plugins must be added before the following line
