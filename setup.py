@@ -22,7 +22,13 @@ def setup_vim():
               vundle_dir])
 
     # Setup .vimrc making a backup if one exists
-    copyfile('./vimrc', os.path.expanduser('.vimrc'))
+    copyfile('./vim/vimrc', os.path.expanduser('.vimrc'))
+
+    # Setup language specific settings
+    ftdir = os.path.expanduser('.vim/ftdetect')
+    if not os.path.exists(ftdir):
+        os.makedirs(ftdir)
+    copyfile('./vim/ucode.vim', ftdir + '/ucode.vim')
 
     # Install the Vundle plugins
     print('Installing Vundle plugins for vim ...')

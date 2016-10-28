@@ -4,7 +4,11 @@
 [ -d "$HOME/.vim/bundle/Vundle.vim" ] || git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Setup .vimrc (making a backup if one exists)
-\cp -v --backup=numbered vimrc ~/.vimrc
+\cp -v --backup=numbered ./vim/vimrc ~/.vimrc
+
+# Setup vim language files
+[ -d "$HOME/.vim/ftdetect" ] || mkdir "$HOME/.vim/ftdetect"
+\cp -v --backup=numbered ./vim/ucode.vim ~/.vim/ftdetect/
 
 # Install the Vundle plugins
 echo "Installing Vundle plugins for vim ..."
