@@ -96,4 +96,7 @@ set backspace=indent,eol,start
 
 " Status line config
 set laststatus=2
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=[col:%c][line:%l/%L]\ %P
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=%=[col:%2c][line:%l/%L]\ %P
+
