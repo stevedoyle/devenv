@@ -11,7 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Syntax highlighting
 Plugin 'scrooloose/syntastic'
@@ -24,7 +24,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'tpope/vim-fugitive'
 "Status line config
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Plugin 'rdnetto/YCM-Generator'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'vim-scripts/taglist.vim'
 
 " All of your plugins must be added before the following line
@@ -96,4 +96,4 @@ set backspace=indent,eol,start
 
 " Status line config
 set laststatus=2
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=[col:%c][line:%l/%L]\ %P
