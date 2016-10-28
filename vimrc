@@ -11,7 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Syntax highlighting
 Plugin 'scrooloose/syntastic'
@@ -24,7 +24,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'tpope/vim-fugitive'
 "Status line config
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'rdnetto/YCM-Generator'
+"Plugin 'rdnetto/YCM-Generator'
 Plugin 'vim-scripts/taglist.vim'
 
 " All of your plugins must be added before the following line
@@ -54,16 +54,19 @@ au BufNewFile,BufRead *.js, *.html, *.css
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" Folding for c doe
+" Folding for c code
 au BufRead,BufNewFile *.c,*.h,*.cpp,*.cc
 	\ set foldmethod=syntax |
 	\ normal zR
 
+" Default to utf-8 encoding
 set encoding=utf-8
+
+" Search for the tags file is higher level directories
+set tags=tags;/
 
 " YouCompleteMe customizations
 let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_extra_conf_globlist=0
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Enable syntax highlighting
@@ -91,3 +94,6 @@ endif
 " Make backspace on OS X delete over line breaks and auto-indent
 set backspace=indent,eol,start
 
+" Status line config
+set laststatus=2
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
