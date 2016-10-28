@@ -63,6 +63,7 @@ set encoding=utf-8
 
 " YouCompleteMe customizations
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_extra_conf_globlist=0
 map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Enable syntax highlighting
