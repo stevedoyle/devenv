@@ -23,9 +23,12 @@ Plugin 'jnurmine/Zenburn'
 "git interface
 Plugin 'tpope/vim-fugitive'
 "Status line config
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'vim-scripts/taglist.vim'
+"Markdown support
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " All of your plugins must be added before the following line
 call vundle#end()		" required
@@ -35,6 +38,9 @@ filetype plugin on
 
 " See docstrings for folded code
 let g:SimpylFold_docstring_preview=1
+
+" Disable folding of markdown code
+let g:vim_markdown_folding_disabled=1
 
 au BufRead,BufNewFile *.py,*.uts
 	\ set tabstop=4 |
@@ -50,6 +56,9 @@ au BufNewFile,BufRead *.js, *.html, *.css
 	\ set softtabstop=2 |
 	\ set shiftwidth=2
 
+au BufRead,BufNewFile *.txt
+	\ set textwidth=80
+
 " Flag extraneous whitespace
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
@@ -59,11 +68,17 @@ au BufRead,BufNewFile *.c,*.h,*.cpp,*.cc
 	\ set foldmethod=syntax |
 	\ normal zR
 
+" Folding for python code
+au BufRead,BufNewFile *.py normal zR
+
 " Default to utf-8 encoding
 set encoding=utf-8
 
 " Search for the tags file is higher level directories
 set tags=tags;/
+
+" Linebreak mode when softwrapping
+set linebreak
 
 " YouCompleteMe customizations
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -96,7 +111,7 @@ set backspace=indent,eol,start
 
 " Status line config
 set laststatus=2
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=[col:%2c][line:%l/%L]\ %P
+"set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
+"set statusline+=\ %{fugitive#statusline()}
+"set statusline+=%=[col:%2c][line:%l/%L]\ %P
 
