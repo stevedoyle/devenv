@@ -18,6 +18,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 "Tree view
 Plugin 'scrooloose/nerdtree'
+"Comment/Uncomment blocks of code
+Plugin 'scrooloose/nerdcommenter'
 "color scheme
 Plugin 'jnurmine/Zenburn'
 "git interface
@@ -29,6 +31,8 @@ Plugin 'vim-scripts/taglist.vim'
 "Markdown support
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+"Tasklist
+Plugin 'TaskList.vim'
 
 " All of your plugins must be added before the following line
 call vundle#end()		" required
@@ -94,6 +98,9 @@ syntax on
 " taglist plugin shortcuts and settings
 noremap <silent> <F8> :TlistToggle<CR>
 noremap <silent> <F9> :TlistShowTag<CR
+
+" NERDTree shortcut
+map <C-n> :NERDTreeToggle<CR>
 
 set nu
 set clipboard=unnamed
