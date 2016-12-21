@@ -33,6 +33,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 "Tasklist
 Plugin 'TaskList.vim'
+" Highlihght and strip trailing whitespace
+Plugin 'ntpeters/vim-better-whitespace'
 
 " All of your plugins must be added before the following line
 call vundle#end()		" required
