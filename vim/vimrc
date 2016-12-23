@@ -10,7 +10,9 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here
 Plugin 'tmhedberg/SimpylFold'
+"Python Indentation
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'tell-k/vim-autopep8'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Syntax highlighting
@@ -35,6 +37,9 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'TaskList.vim'
 " Highlihght and strip trailing whitespace
 Plugin 'ntpeters/vim-better-whitespace'
+"Gist
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 " All of your plugins must be added before the following line
 call vundle#end()		" required
