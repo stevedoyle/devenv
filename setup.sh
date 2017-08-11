@@ -23,3 +23,9 @@ fi
 
 # ctags setup
 \cp -v --backup=numbered dotctags ~/.ctags
+
+# tmux setup
+\cp -v --backup=numbered ./tmux/tmux.conf ~/.tmux.conf
+
+\git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
