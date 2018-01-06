@@ -16,15 +16,18 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
-"Syntax highlighting
+"Syntax highlighting / checking
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
+Plugin 'python-mode/python-mode'
 "Tree view
 Plugin 'scrooloose/nerdtree'
 "Comment/Uncomment blocks of code
 Plugin 'scrooloose/nerdcommenter'
 "color scheme
-Plugin 'jnurmine/Zenburn'
+" Plugin 'jnurmine/Zenburn'
+"Plugin 'lifepillar/vim-solarized8'
+Plugin 'altercation/vim-colors-solarized'
 "git interface
 Plugin 'tpope/vim-fugitive'
 "Status line config
@@ -54,7 +57,7 @@ let g:SimpylFold_docstring_preview=1
 " Disable folding of markdown code
 let g:vim_markdown_folding_disabled=1
 
-au BufRead,BufNewFile *.py,*.uts,*.yaml
+au BufRead,BufNewFile *.py,*.uts
 	\ set tabstop=4 |
 	\ set softtabstop=4 |
 	\ set shiftwidth=4 |
@@ -70,6 +73,15 @@ au BufNewFile,BufRead *.js, *.html, *.css
 
 au BufRead,BufNewFile *.txt
 	\ set textwidth=80
+
+au BufRead,BufNewFile *.m
+	\ set tabstop=4 |
+	\ set softtabstop=4 |
+	\ set shiftwidth=4 |
+	\ set textwidth=79 |
+	\ set expandtab |
+	\ set autoindent |
+	\ set fileformat=unix
 
 " Flag extraneous whitespace
 highlight BadWhitespace ctermbg=red guibg=red
@@ -101,7 +113,8 @@ let python_highlight_all=1
 syntax on
 
 " Setup colorscheme
-"colorscheme zenburn
+"colorscheme solarized8_dark
+colorscheme solarized
 
 " taglist plugin shortcuts and settings
 noremap <silent> <F8> :TlistToggle<CR>
