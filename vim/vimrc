@@ -14,7 +14,7 @@ Plugin 'tmhedberg/SimpylFold'
 "Python Indentation
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tell-k/vim-autopep8'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 "Syntax highlighting / checking
 Plugin 'scrooloose/syntastic'
@@ -27,7 +27,7 @@ Plugin 'scrooloose/nerdcommenter'
 "color scheme
 " Plugin 'jnurmine/Zenburn'
 "Plugin 'lifepillar/vim-solarized8'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 "git interface
 Plugin 'tpope/vim-fugitive'
 "Status line config
@@ -105,8 +105,8 @@ set tags=tags;/
 set linebreak
 
 " YouCompleteMe customizations
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Enable syntax highlighting
 let python_highlight_all=1
@@ -114,7 +114,7 @@ syntax on
 
 " Setup colorscheme
 "colorscheme solarized8_dark
-colorscheme solarized
+"colorscheme solarized
 
 " taglist plugin shortcuts and settings
 noremap <silent> <F8> :TlistToggle<CR>
